@@ -6,3 +6,5 @@ Kaitlyn Vetica
 Motivation:
 
 Description:
+
+How our project relates to the topics of parsing, interpretation and compilation:
