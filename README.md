@@ -3,4 +3,6 @@ Group Members:
 Olivia Chilvers
 Kaitlyn Vetica 
 
+Motivation:
+
 Description:
