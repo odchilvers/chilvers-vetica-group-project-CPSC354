@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Student Program Evaluation Generator makes use of a maintained database containing information from course catalogs and program evaluations in order to generate a college student's four-year academic plan. It includes functions for creating, updating and manipulating the four year plans.
+The Student Program Evaluation Generator makes use of a maintained database containing information from course catalogs and program evaluations in order to generate a college student's four-year academic plan. It includes functions for creating and manipulating the database as well as custom type blocks for Course and Plan.
 
 ## Custom Types 
 
