@@ -66,6 +66,7 @@ ADD {
         name: "Data Structures",
         credits: 3,
         semester: "Fall or Spring"
+        difficultyScore = 2.5
     }
 }
 ```
