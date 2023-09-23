@@ -93,8 +93,6 @@ semester2: CPSC 231, MATH 211, GE, LANGUAGE
 ...
 ```
 
-Show a use case for a recursive Blockly program, illustrating that Blockly allows the user to build infinitley many complex programs from a small number of building blocks.
-
 ## Use Case For a Recursive Blockly Program
 A use case for a recursive Blockly program could be a situation in which a student is wondering what their four year plan would look like depending on their major. In addition, the student could populate multiple versions of the four year plan based off of the same major catalog. With using the same building blocks, the student is able to form them in different ways to serve multiple functions. This opens up even more possibilities where the student can even set a maximum average difficulty for their four year plan to ensure that they are not overworked. With the benefits of a recursive blockly program being versatile, the student can produce hypothetically endless mutations of their four year plan to find what they think is best for their lifestyle. 
 
