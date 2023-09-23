@@ -19,6 +19,8 @@ Course {
     credits = 3
     semester = "Fall or Spring"
     difficultyScore = 2.5
+    prerequisite = ["CPSC231"]
+    taken = "True"
 }
 ```
 
@@ -66,7 +68,9 @@ ADD {
         name: "Data Structures",
         credits: 3,
         semester: "Fall or Spring"
-        difficultyScore = 2.5
+        difficultyScore: 2.5
+        prerequisite: ["CPSC231"]
+        taken: "True"
     }
 }
 ```
@@ -98,6 +102,39 @@ UPDATE {
         credits: 3,
         semester: "Fall Only"
     }
+}
+```
+
+### CHECK_PREREQUISITE
+
+#### Semantics
+The CHECK_PREREQUISITE function checks if a Course has a prerequisite class. If it does, it adds the prerequisite Course to the semester prior to the Course it checked. Uses conditional statements.
+
+#### Usage 
+``` dsl
+CHECK_PREREQUISITE {
+    entity: Course
+    criteria: code = "CPSC350"
+}
+
+// Conditional Logic
+if (Course.HasPrerequisite()) {
+    // Handle when there is a prerequisite
+} else {
+    // Handle when there is no prerequisite
+}
+```
+
+### CHECK_IF_TAKEN
+
+#### Semantics
+The CHECK_IF_TAKEN function checks if a Course has been taken based off of the Course attribute "taken." Returns true or false if taken or not taken. 
+
+#### Usage
+```dsl
+CHECK_IF_TAKEN{
+    entity: Course
+    criteria: code = "CPSC350"
 }
 ```
 
