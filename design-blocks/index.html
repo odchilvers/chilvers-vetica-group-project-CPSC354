@@ -28,6 +28,29 @@
         </section>
     </main>
 
+    <!-- Define the Blockly toolbox with custom blocks -->
+    <xml id="toolbox" style="display: none">
+        <!-- Custom Blocks Category -->
+        <category name="Custom Blocks" colour="230">
+            <!-- Add Course Block -->
+            <block type="add_course"></block>
+            
+            <!-- Find Course Block -->
+            <block type="find_course"></block>
+            
+            <!-- Update Course Block -->
+            <block type="update_course"></block>
+            
+            <!-- Delete Course Block -->
+            <block type="delete_course"></block>
+            
+            <!-- Generate Plan Block -->
+            <block type="generate_plan"></block>
+        </category>
+        
+        <!-- Other Toolbox Categories (if needed) -->
+        </xml>
+
     <footer>
         <p>&copy; 2023 Student Program Evaluation Generator</p>
     </footer>
@@ -101,29 +124,6 @@
             document.getElementById('four-year-plan').innerText = "Generated plan will appear here.";
         }
     </script>
-
-    <!-- Define the Blockly toolbox with custom blocks -->
-    <xml id="toolbox" style="display: none">
-    <!-- Custom Blocks Category -->
-    <category name="Custom Blocks" colour="230">
-        <!-- Add Course Block -->
-        <block type="add_course"></block>
-        
-        <!-- Find Course Block -->
-        <block type="find_course"></block>
-        
-        <!-- Update Course Block -->
-        <block type="update_course"></block>
-        
-        <!-- Delete Course Block -->
-        <block type="delete_course"></block>
-        
-        <!-- Generate Plan Block -->
-        <block type="generate_plan"></block>
-    </category>
-    
-    <!-- Other Toolbox Categories (if needed) -->
-</xml>
 
 </body>
 </html>
