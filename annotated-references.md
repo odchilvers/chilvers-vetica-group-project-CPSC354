@@ -18,4 +18,9 @@ This website provides a more detailed tutorial to follow that demonstrates how t
 
 Useful AI tool to help define topics, answer clarification questions, and detail Blockly code.
 
+## Reference 4
+
+### https://alexhkurz.github.io/BlocklyLambdaCalculus/
+
+Reference for creating html page with custom blocks using Blockly.
 
