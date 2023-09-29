@@ -51,6 +51,15 @@ Blockly.Blocks['find_course'] = {
     }
 };
 
+// JavaScript Function for Find Course Blockly Block
+Blockly.JavaScript['find_course'] = function(block) {
+    var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
+
+    // Generate code to find a course using the provided values
+    var code = 'findCourse("' + value_course_code + '");\n';
+    return code;
+};
+
 // Update Course Block
 Blockly.Blocks['update_course'] = {
     init: function() {
@@ -79,6 +88,15 @@ Blockly.Blocks['delete_course'] = {
         this.setTooltip("Delete a course from the database");
         this.setHelpUrl("");
     }
+};
+
+// JavaScript Function for delete Course Blockly Block
+Blockly.JavaScript['delete_course'] = function(block) {
+    var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
+
+    // Generate code to delete a course using the provided values
+    var code = 'deleteCourse("' + value_course_code + '");\n';
+    return code;
 };
 
 // Generate Plan Block
