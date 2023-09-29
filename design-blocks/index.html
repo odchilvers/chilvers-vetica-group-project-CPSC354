@@ -18,14 +18,9 @@
             <h2>Student Information</h2>
             <div id="blocklyDiv" style="height: 400px; width: 100%;"></div>
             <button onclick="generatePlan()">Generate Four-Year Plan</button>
-            <button onclick="generateCode()">Generate Code</button>
         </section>
 
         <section id="output-section">
-            <h2>Generate JavaScript</h2>
-            <div id="javascript-code">
-                <!-- Generated JavaScript code goes here -->
-            </div>
             <h2>Four-Year Plan</h2>
             <div id="four-year-plan">
                 <!-- Generated four-year plan goes here -->
@@ -51,9 +46,6 @@
             
             <!-- Generate Plan Block -->
             <block type="generate_plan"></block>
-
-            <!-- Generate Code Block -->
-            <block type="generate_code"></block>
         </category>
         
         <!-- Other Toolbox Categories (if needed) -->
@@ -122,15 +114,6 @@
         };
 
         // Define other custom Blockly blocks (DELETE, CHECK_PREREQUISITE, CHECK_IF_TAKEN, GENERATE) here
-
-        // Generate JavaScript code
-        function generateCode() {
-            // Retrieve and process Blockly code to generate the javascript code
-            var code = Blockly.JavaScript.workspaceToCode(workspace);
-            // Implement logic to generate the code based on the code (not shown here).
-            // Display the generated code in the output section.
-            document.getElementById('javascript-code').innerText = "Generated code will appear here.";
-        }
 
         // Generate function for demonstration
         function generatePlan() {
