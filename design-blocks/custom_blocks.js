@@ -42,11 +42,9 @@ Blockly.Blocks['find_course'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Find Course");
-        this.appendValueInput("ARGUMENT")
-            .setCheck(null)
-            .appendField("where")
-            .appendField(new Blockly.FieldTextInput("code"), "CRITERIA")
-            .appendField("=");
+        this.appendDummyInput()
+            .appendField("Course Code:")
+            .appendField(new Blockly.FieldTextInput("default"), "COURSE_CODE_INPUT");
         this.setColour(230);
         this.setTooltip("Find information about a course");
         this.setHelpUrl("");
@@ -74,8 +72,9 @@ Blockly.Blocks['delete_course'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Delete Course");
-        this.appendValueInput("ARGUMENT")
-            .setCheck(null);
+        this.appendDummyInput()
+            .appendField("Course Code:")
+            .appendField(new Blockly.FieldTextInput("default"), "COURSE_CODE_INPUT");
         this.setColour(230);
         this.setTooltip("Delete a course from the database");
         this.setHelpUrl("");
