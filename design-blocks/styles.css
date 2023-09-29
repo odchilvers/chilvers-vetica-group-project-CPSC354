@@ -67,6 +67,14 @@ button:hover {
     border-radius: 5px;
 }
 
+#javascript-code {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
 #four-year-plan {
     border: 1px solid #ccc;
     padding: 10px;
