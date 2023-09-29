@@ -69,3 +69,16 @@ Blockly.Blocks['generate_plan'] = {
         this.setHelpUrl("");
     }
 };
+
+// Generate Plan Block
+Blockly.Blocks['generate_code'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Generate Code");
+        this.appendValueInput("ARGUMENT")
+            .setCheck(null);
+        this.setColour(230);
+        this.setTooltip("Generate the code");
+        this.setHelpUrl("");
+    }
+};
