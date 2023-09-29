@@ -37,8 +37,6 @@ Blockly.JavaScript['add_course'] = function(block) {
     return code;
 };
 
-
-
 // Find Course Block
 Blockly.Blocks['find_course'] = {
     init: function() {
