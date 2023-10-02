@@ -64,40 +64,14 @@ Blockly.JavaScript['find_course'] = function(block) {
     return code;
 };
 
-/*
 // Update Course Block
 Blockly.Blocks['update_course'] = {
     init: function() {
         this.appendDummyInput()
             .appendField("Update Course");
-        this.appendValueInput("ARGUMENT")
-            .setCheck(null)
-            .appendField("where")
-            .appendField(new Blockly.FieldTextInput("code"), "CRITERIA")
-            .appendField("with data:");
-        this.setColour(230);
-        this.setTooltip("Update course information");
-        this.setHelpUrl("");
-    }
-};
-
-// JavaScript Function for Update Course Blockly Block
-Blockly.JavaScript['update_course'] = function(block) {
-    var criteria = block.getFieldValue('CRITERIA');
-    var argumentCode = Blockly.JavaScript.valueToCode(block, 'ARGUMENT', Blockly.JavaScript.ORDER_NONE) || '';
-
-    // Generate code to update a course using the provided criteria and data
-    var code = 'updateCourse("' + criteria + '", ' + argumentCode + ');\n';
-    return code;
-};
-
-*/
-
-// Update Course Block
-Blockly.Blocks['update_course'] = {
-    init: function() {
         this.appendDummyInput()
-            .appendField("Update Course");
+            .appendField("Course Code to update:")
+            .appendField(new Blockly.FieldTextInput("default"), "UPDATE_CODE")
         this.appendDummyInput()
             .appendField("where")
             .appendField(new Blockly.FieldDropdown([
@@ -105,7 +79,8 @@ Blockly.Blocks['update_course'] = {
                 ["Course Name", "name"],
                 ["Credits", "credits"],
                 ["Semester", "semester"],
-                ["Difficulty Score", "difficulty_score"]
+                ["Difficulty Score", "difficulty_score"],
+                ["Prerequisite", "prerequisite"]
             ]), "CRITERIA");
         this.appendDummyInput()
             .appendField(" = ")
@@ -118,11 +93,12 @@ Blockly.Blocks['update_course'] = {
 
 // JavaScript Function for Update Course Blockly Block
 Blockly.JavaScript['update_course'] = function(block) {
+    var update_code = block.getFieldValue('UPDATE_CODE');
     var criteria = block.getFieldValue('CRITERIA');
     var dataUpdate = block.getFieldValue('DATA_UPDATE');
 
     // Generate code to update a course using the provided criteria and data
-    var code = 'updateCourse("' + criteria + '", "' + dataUpdate + '");\n';
+    var code = 'updateCourse("' + update_code + '", "' + criteria + '", "' + dataUpdate + '");\n';
     return code;
 };
 
@@ -162,7 +138,7 @@ Blockly.Blocks['generate_plan'] = {
     }
 };
 
-// Generate Plan Block
+// Generate Code Block
 Blockly.Blocks['generate_code'] = {
     init: function() {
         this.appendDummyInput()
