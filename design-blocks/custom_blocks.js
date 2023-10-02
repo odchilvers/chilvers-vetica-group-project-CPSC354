@@ -11,13 +11,16 @@ Blockly.Blocks['add_course'] = {
             .appendField(new Blockly.FieldTextInput("default"), "COURSE_NAME_INPUT");
         this.appendDummyInput()
             .appendField("Credits:")
-            .appendField(new Blockly.FieldNumber(0), "CREDITS_INPUT");
+            .appendField(new Blockly.FieldNumber(0, 0, 3), "CREDITS_INPUT");
         this.appendDummyInput()
             .appendField("Semester:")
             .appendField(new Blockly.FieldTextInput("default"), "SEMESTER_INPUT");
         this.appendDummyInput()
             .appendField("Difficulty Score:")
-            .appendField(new Blockly.FieldNumber(0), "DIFFICULTY_SCORE_INPUT");
+            .appendField(new Blockly.FieldNumber(0, 0, 3), "DIFFICULTY_SCORE_INPUT");
+        this.appendDummyInput()
+            .appendField("Prerequisite Course:")
+            .appendField(new Blockly.FieldTextInput("default"), "PREREQ_INPUT")
         this.setColour(230);
         this.setTooltip("Add a new course to the database");
         this.setHelpUrl("");
@@ -31,9 +34,10 @@ Blockly.JavaScript['add_course'] = function(block) {
     var value_credits = block.getFieldValue('CREDITS_INPUT');
     var value_semester = block.getFieldValue('SEMESTER_INPUT');
     var value_difficulty_score = block.getFieldValue('DIFFICULTY_SCORE_INPUT');
+    var value_prerequisite = block.getFieldValue('PREREQ_INPUT');
 
     // Generate code to add a course using the provided values
-    var code = 'addCourse("' + value_course_code + '", "' + value_course_name + '", ' + value_credits + ', "' + value_semester + '", ' + value_difficulty_score + ');\n';
+    var code = 'addCourse("' + value_course_code + '", "' + value_course_name + '", ' + value_credits + ', "' + value_semester + '", ' + value_difficulty_score + ', "' + value_prerequisite + '");\n';
     return code;
 };
 
@@ -60,6 +64,7 @@ Blockly.JavaScript['find_course'] = function(block) {
     return code;
 };
 
+/*
 // Update Course Block
 Blockly.Blocks['update_course'] = {
     init: function() {
@@ -74,6 +79,51 @@ Blockly.Blocks['update_course'] = {
         this.setTooltip("Update course information");
         this.setHelpUrl("");
     }
+};
+
+// JavaScript Function for Update Course Blockly Block
+Blockly.JavaScript['update_course'] = function(block) {
+    var criteria = block.getFieldValue('CRITERIA');
+    var argumentCode = Blockly.JavaScript.valueToCode(block, 'ARGUMENT', Blockly.JavaScript.ORDER_NONE) || '';
+
+    // Generate code to update a course using the provided criteria and data
+    var code = 'updateCourse("' + criteria + '", ' + argumentCode + ');\n';
+    return code;
+};
+
+*/
+
+// Update Course Block
+Blockly.Blocks['update_course'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Update Course");
+        this.appendDummyInput()
+            .appendField("where")
+            .appendField(new Blockly.FieldDropdown([
+                ["Course Code", "code"],
+                ["Course Name", "name"],
+                ["Credits", "credits"],
+                ["Semester", "semester"],
+                ["Difficulty Score", "difficulty_score"]
+            ]), "CRITERIA");
+        this.appendDummyInput()
+            .appendField(" = ")
+            .appendField(new Blockly.FieldTextInput("default"), "DATA_UPDATE");
+        this.setColour(230);
+        this.setTooltip("Update course information");
+        this.setHelpUrl("");
+    }
+};
+
+// JavaScript Function for Update Course Blockly Block
+Blockly.JavaScript['update_course'] = function(block) {
+    var criteria = block.getFieldValue('CRITERIA');
+    var dataUpdate = block.getFieldValue('DATA_UPDATE');
+
+    // Generate code to update a course using the provided criteria and data
+    var code = 'updateCourse("' + criteria + '", "' + dataUpdate + '");\n';
+    return code;
 };
 
 // Delete Course Block
