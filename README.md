@@ -31,4 +31,4 @@
 * ChatGpt - Explanation of DSL design document layout and syntax
 
   ## Index.html
-  [Link to Design Blocks](../design-blocks/index.html)
+  [Link to Design Blocks]([../design-blocks/index.html](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/index.html)https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/index.html)
