@@ -29,3 +29,6 @@
 * In class notes
 * https://developers.google.com/blockly/reference/js/blockly.fielddropdown_class 
 * ChatGpt - Explanation of DSL design document layout and syntax
+
+  ## Index.html
+  [Link to Design Blocks](../design-blocks/index.html)
