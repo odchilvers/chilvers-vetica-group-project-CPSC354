@@ -11,3 +11,6 @@ Useful AI tool to help define topics, answer clarification questions, and detail
 
 [Alex Kurz GitHub](https://alexhkurz.github.io/BlocklyLambdaCalculus/)
 Reference for creating html page with custom blocks using Blockly.
+
+[Prolog Informational Source] (https://www3.cs.stonybrook.edu/~warren/xsbbook/node11.html)
+Reference for basics of Prolog and using it as a database query language.
