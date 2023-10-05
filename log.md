@@ -35,10 +35,8 @@ Here is the brainstorm of constraints that we will take into account when creati
 * Semester Availability - Offered Spring/Fall/Both?
 * Credit Constraints - Maximum number of credits per semester is 18. Cannot exceed this. 
 * Difficulty Score Requirement - Avg difficulty score for semester must be within a range of 1.5-2.0 (difficulty scores are on a scale from 1-3).
-
 Overall, Courses can be set as tuples in the database, such as the following: 
-* <code> course(Code, ClassName, Credits, SemesterOffered, Prerequisite, DifficultyScore) <code>
-
+<code> course(Code, ClassName, Credits, SemesterOffered, Prerequisite, DifficultyScore) <code>
 Example Database in PL:
 ```dsl
 % Define course information
