@@ -38,3 +38,21 @@ Here is the brainstorm of constraints that we will take into account when creati
 
 Overall, Courses can be set as tuples in the database, such as the following: 
 * <code> course(Code, ClassName, Credits, SemesterOffered, Prerequisite, DifficultyScore) <code>
+
+Example Database in PL:
+```dsl
+% Define course information
+course('CPSC330', 'Digital Logic', 3, 'Spring', 2).
+course('CPSC351', 'Computer Architecture', 3, 'Fall', 3).
+
+% Define prerequisites
+% Meaning: CPSC330 is a prereq for CPSC351
+prerequisite('CPSC330', 'CPSC351').
+
+% Define taken 
+taken('CPSC330')
+
+% Define course semester availability
+semester('CPSC330', 'Spring').
+semester('CPSC351', 'Fall').
+```
