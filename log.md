@@ -1,4 +1,4 @@
-# Group Log 
+# Log 
 
 ## Group Members
 
@@ -24,6 +24,9 @@ Group Contributions:
 * Brainstormed idea for project + description 
 * Accumulated references 
 
+# How We Used AI 
+We used AI for assistance in creating Blockly code and referenced it as a template for our custom_blocks.js. We found it more helpful than referencing Stack Overflow or other online sources because it was more specific to what we were trying to do. It served as a great tool for understanding how to create blocks in Blockly and for deciding how we wanted our blocks to function individually and together. 
+
 # Prolog Details + Database Constraints 
 Prolog offers a database for us to utilize in our project in order to query courses and course information to generate the four-year plan. Each Course has attributes that can be filed into tables into a database for querying and answering. With this, the Courses will have certain constraints when adding them to a semester for the four-year plan. 
 Here is the brainstorm of constraints that we will take into account when creating the database and corresponding code for processing our database of Courses: 
@@ -35,4 +38,3 @@ Here is the brainstorm of constraints that we will take into account when creati
 
 Overall, Courses can be set as tuples in the database, such as the following: 
 <code> course(Code, ClassName, Credits, SemesterOffered, Prerequisite, DifficultyScore) <code>
-
