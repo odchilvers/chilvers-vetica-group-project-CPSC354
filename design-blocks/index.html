@@ -20,6 +20,7 @@
             <div id="blocklyDiv" style="height: 400px; width: 100%;"></div>
             <button onclick="generateCode()">Generate Code</button>
             <button onclick="generatePlan()">Generate Four-Year Plan</button>
+            <button onclick="saveCode()">Save Code</button>
         </section>
 
         <section id="output-section">
@@ -29,6 +30,10 @@
             </div>
             <h2>Four-Year Plan</h2>
             <div id="four-year-plan">
+                <!-- Generated four-year plan goes here -->
+            </div>
+            <h2>Saved Code</h2>
+            <div id="save-code-button">
                 <!-- Generated four-year plan goes here -->
             </div>
         </section>
@@ -142,6 +147,33 @@
             // Display the generated plan in the output section.
             document.getElementById('four-year-plan').innerText = "Generated plan will appear here.";
         }
+
+        // Function to save code as a file
+        function saveCode() {
+            // Retrieve the generated code
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Create a Blob object to store the code content
+            var blob = new Blob([code], { type: 'text/javascript' });
+
+            // Create a temporary URL for the Blob
+            var url = URL.createObjectURL(blob);
+
+            // Create an anchor element to trigger the download
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'generated_code.js'; // Specify the filename here
+
+            // Programmatically click the anchor element to trigger the download
+            a.click();
+
+            // Release the Blob URL
+            URL.revokeObjectURL(url);
+
+            // Add a click event listener to the "Save Code" button
+            document.getElementById('save-code-button').addEventListener('click', saveCodeToFile);
+        }
+
     </script>
 
 </body>
