@@ -26,3 +26,6 @@
 
 ## Index.html
 [Link to Program Generator](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/design-blocks/index.html)
+
+## Milestone1
+[Link to Milestone1](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/milestone1/)
