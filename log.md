@@ -12,8 +12,9 @@
 
 Olivia's Contributions: 
 * Created [design2.md](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design2.md)
-* Added "generate code" segments for [index.html](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/index.html)/[custom_blocks.js](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/custom_blocks.js) 
+* Added "generate code" and "save code" segments for [index.html](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/index.html)/[custom_blocks.js](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design-blocks/custom_blocks.js) 
 * Created and maintained [Github Pages site](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/)
+* Produced [Milestone1](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/milestone1)
 
 Kaitlyn's Contributions: 
 * Created [design.md](https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354/blob/main/design.md)
