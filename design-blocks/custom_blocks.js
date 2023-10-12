@@ -37,7 +37,8 @@ Blockly.JavaScript['add_course'] = function(block) {
     var value_prerequisite = block.getFieldValue('PREREQ_INPUT');
 
     // Generate code to add a course using the provided values
-    var code = 'addCourse("' + value_course_code + '", "' + value_course_name + '", ' + value_credits + ', "' + value_semester + '", ' + value_difficulty_score + ', "' + value_prerequisite + '");\n';
+    // var code = 'addCourse("' + value_course_code + '", "' + value_course_name + '", ' + value_credits + ', "' + value_semester + '", ' + value_difficulty_score + ', "' + value_prerequisite + '");\n';
+    var code = 'course(' + value_course_code + ', "' + value_course_name + '", ' + value_credits + ', ' + value_semester + ', ' + value_difficulty_score + ', [' + value_prerequisite + ']).\n';
     return code;
 };
 
@@ -62,7 +63,10 @@ Blockly.JavaScript['find_course'] = function(block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
 
     // Generate code to find a course using the provided values
-    var code = 'findCourse("' + value_course_code + '");\n';
+    // var code = 'findCourse("' + value_course_code + '");\n';
+
+    // ********** this is a query. queries are executed in the interpreter, not from the file
+    var code = 'find_course_by_code(' + value_course_code + ', CourseName, Credits, Semester, DifficultyScore, Prerequisite).';
     return code;
 };
 
@@ -100,7 +104,8 @@ Blockly.JavaScript['update_course'] = function(block) {
     var dataUpdate = block.getFieldValue('DATA_UPDATE');
 
     // Generate code to update a course using the provided criteria and data
-    var code = 'updateCourse(' + find_course_block + ', "' + criteria + '", "' + dataUpdate + '");\n';
+    // var code = 'updateCourse(' + find_course_block + ', "' + criteria + '", "' + dataUpdate + '");\n';
+    var code = 'update_course((' + find_course_block + ', "' + criteria + '", ' + dataUpdate + ').\n';
     return code;
 };
 
