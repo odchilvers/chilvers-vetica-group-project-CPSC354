@@ -38,7 +38,7 @@ Blockly.JavaScript['add_course'] = function(block) {
 
     // Generate code to add a course using the provided values
     // var code = 'addCourse("' + value_course_code + '", "' + value_course_name + '", ' + value_credits + ', "' + value_semester + '", ' + value_difficulty_score + ', "' + value_prerequisite + '");\n';
-    var code = 'course(' + value_course_code + ', "' + value_course_name + '", ' + value_credits + ', ' + value_semester + ', ' + value_difficulty_score + ', [' + value_prerequisite + ']).\n';
+    var code = 'add_course(' + value_course_code + ', "' + value_course_name + '", ' + value_credits + ', ' + value_semester + ', ' + value_difficulty_score + ', [' + value_prerequisite + '])).\n';
     return code;
 };
 
@@ -66,7 +66,7 @@ Blockly.JavaScript['find_course'] = function(block) {
     // var code = 'findCourse("' + value_course_code + '");\n';
 
     // ********** this is a query. queries are executed in the interpreter, not from the file
-    var code = 'find_course_by_code(' + value_course_code + ', CourseName, Credits, Semester, DifficultyScore, Prerequisite).';
+    var code = 'find_course(' + value_course_code + ', CourseName, Credits, Semester, DifficultyScore, Prerequisite).';
     return code;
 };
 
@@ -128,7 +128,8 @@ Blockly.Blocks['delete_course'] = {
 Blockly.JavaScript['delete_course'] = function(block) {
     var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
     // Generate code to delete a course using the provided course code
-    var code = 'deleteCourse(' + find_course_block + ');\n';
+    // var code = 'deleteCourse(' + find_course_block + ');\n';
+    var code = 'delete_course(' + find_course_block + ').\n';
     return code;
 };
 
