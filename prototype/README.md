@@ -19,13 +19,21 @@
 
 ## Test Software
 
-* TBD
+* Step 1: Open "Set Up Blocks"
+* Step 2: Grab desired blocks from within "Set Up Blocks"
+* Step 3: Open "Action Blocks"
+* Step 4: Place "Add Course" block
+* Step 5: Fill out information
+* Step 6: Repeat Steps 3 & 4 for each course to be added
+* Step 7: Click "Generate Code" to view the Prolog code
+* Step 8: Click "Save Code" to save the Prolog code
 
 ## Recreate Demo
 
 * TBD
 
 ## Link to Slides
+[Link to Program Generator](https://docs.google.com/presentation/d/1N27hrIdU2opAgURgP_sITBGFSBmhPWlpgiVvcm48WoU/edit?usp=sharing)
 
 ## Index.html
 [Link to Program Generator](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/design-blocks/index.html)
