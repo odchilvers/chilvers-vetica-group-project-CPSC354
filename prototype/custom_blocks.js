@@ -21,7 +21,7 @@ Blockly.Blocks['add_course'] = {
         this.appendDummyInput()
             .appendField("Prerequisite Course:")
             .appendField(new Blockly.FieldTextInput("default"), "PREREQ_INPUT")
-        this.setColour(230);
+        this.setColour('#A165F1');
         this.setTooltip("Add a new course to the database");
         this.setHelpUrl("");
     }
@@ -59,7 +59,7 @@ Blockly.JavaScript['add_course'] = function(block) {
 // Find Course Block (standalone)
 Blockly.Blocks['find_course'] = {
     init: function() {
-        this.setColour(230);
+        this.setColour('#30A3E5');
         this.setPreviousStatement(false); // Disable connection from the top
         this.setNextStatement(false);     // Disable connection from the bottom
         this.appendDummyInput()
@@ -83,7 +83,7 @@ Blockly.JavaScript['find_course'] = function(block) {
 // Update Course Block (standalone)
 Blockly.Blocks['update_course'] = {
     init: function() {
-        this.setColour(230);
+        this.setColour('#30A3E5');
         this.setOutput(false);
         this.appendDummyInput()
             .appendField("Set Up Update Course");
@@ -109,7 +109,7 @@ Blockly.JavaScript['update_course'] = function(block) {
 // Delete Course Block (standalone)
 Blockly.Blocks['delete_course'] = {
     init: function() {
-        this.setColour(230);
+        this.setColour('#30A3E5');
         this.setOutput(false);
         this.appendDummyInput()
             .appendField("Set Up Delete Course");
