@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,24 @@
     <!-- Replace the URLs with Google's CDN -->
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="custom_blocks.js"></script>
+
+    <script>
+        function getCourseInfo(courseCode) {
+            fetch(`/getCourseInfo?code=${courseCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Process and display the data on your webpage
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Student Program Evaluation Generator</h1>
@@ -32,10 +49,6 @@
             <div id="four-year-plan">
                 <!-- Generated four-year plan goes here -->
             </div>
-            <h2>Saved Code</h2>
-            <div id="save-code-button">
-                <!-- Generated four-year plan goes here -->
-            </div>
         </section>
     </main>
 
@@ -48,13 +61,13 @@
 
             <!-- Find Course Block -->
             <block type="find_course"></block>
-            
+
             <!-- Update Course Block -->
             <block type="update_course"></block>
-            
+
             <!-- Delete Course Block -->
             <block type="delete_course"></block>
-            
+
             <!-- Generate Plan Block -->
             <!-- <block type="generate_plan"></block>
 
@@ -62,9 +75,9 @@
             <block type="generate_code"></block> -->
 
         </category>
-        
+
         <!-- Other Toolbox Categories (if needed) -->
-        </xml>
+    </xml>
 
     <footer>
         <p>&copy; 2023 Student Program Evaluation Generator</p>
@@ -80,7 +93,7 @@
 
         // Define custom Blockly blocks based on your DSL
         Blockly.Blocks['add_block'] = {
-            init: function() {
+            init: function () {
                 this.appendDummyInput()
                     .appendField("ADD")
                     .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
@@ -96,7 +109,7 @@
         };
 
         Blockly.Blocks['find_block'] = {
-            init: function() {
+            init: function () {
                 this.appendDummyInput()
                     .appendField("FIND")
                     .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
@@ -111,7 +124,7 @@
         };
 
         Blockly.Blocks['update_block'] = {
-            init: function() {
+            init: function () {
                 this.appendDummyInput()
                     .appendField("UPDATE")
                     .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
@@ -153,8 +166,8 @@
             // Retrieve the generated code
             var code = Blockly.JavaScript.workspaceToCode(workspace);
 
-            // Create a Blob object to store the code content
-            var blob = new Blob([code], { type: 'text/prolog' });
+            // Create a Blob object to store the code content as Prolog
+            var blob = new Blob([code], { type: 'text/plain' });
 
             // Create a temporary URL for the Blob
             var url = URL.createObjectURL(blob);
@@ -162,19 +175,18 @@
             // Create an anchor element to trigger the download
             var a = document.createElement('a');
             a.href = url;
-            a.download = 'generated_code.pl'; // Specify the filename here
+            a.download = 'generated_code.pl'; // Specify the filename with a .pl extension
 
             // Programmatically click the anchor element to trigger the download
             a.click();
 
             // Release the Blob URL
             URL.revokeObjectURL(url);
-
-            // Add a click event listener to the "Save Code" button
-            document.getElementById('save-code-button').addEventListener('click', saveCodeToFile);
         }
+
 
     </script>
 
 </body>
+
 </html>
