@@ -158,3 +158,29 @@ Blockly.Blocks['generate_code'] = {
         this.setHelpUrl("");
     }
 };
+
+// Find Course Block (standalone)
+Blockly.Blocks['calculate_avg_difficulty'] = {
+    init: function() {
+        this.setColour('#A165F1');
+        this.setPreviousStatement(false); // Disable connection from the top
+        this.setNextStatement(false);     // Disable connection from the bottom
+        this.appendDummyInput()
+            .appendField("Calculate Average Difficulty Score");
+        this.setTooltip("Determine that average of difficulty score across the semester");
+        this.setHelpUrl("");
+    }
+};
+
+// JavaScript Function for Find Course Blockly Block
+Blockly.JavaScript['calculate_avg_difficulty'] = function(block) {
+    // Generate code to find a course using the provided values
+    // var code = 'findCourse("' + value_course_code + '");\n';
+    var code = `average_difficulty_score(Average) :-
+        findall(Difficulty, course(_, _, _, _, Difficulty, _), DifficultyList),
+        sum_list(DifficultyList, TotalDifficulty),
+        length(DifficultyList, NumCourses),
+        Average is TotalDifficulty / NumCourses.`;
+
+    return code;
+};

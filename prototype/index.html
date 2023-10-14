@@ -73,6 +73,9 @@
             <!-- Add Course Block -->
             <block type="add_course"></block>
 
+            <!-- Calculate Average Difficulty Block -->
+            <block type="calculate_avg_difficulty"></block>
+
         </category>
 
         <!-- Other Toolbox Categories (if needed) -->
@@ -88,57 +91,6 @@
             toolbox: document.getElementById('toolbox'),
             scrollbars: true
         });
-
-
-        // Define custom Blockly blocks based on your DSL
-        Blockly.Blocks['add_block'] = {
-            init: function () {
-                this.appendDummyInput()
-                    .appendField("ADD")
-                    .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
-                    .appendField("with data:");
-                this.appendValueInput("DATA")
-                    .setCheck("Course");
-                this.setPreviousStatement(true, null);
-                this.setNextStatement(true, null);
-                this.setColour(230);
-                this.setTooltip("Add a new course to the database");
-                this.setHelpUrl("");
-            }
-        };
-
-        Blockly.Blocks['find_block'] = {
-            init: function () {
-                this.appendDummyInput()
-                    .appendField("FIND")
-                    .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
-                    .appendField("where")
-                    .appendField(new Blockly.FieldTextInput("code"), "CRITERIA")
-                    .appendField("=");
-                this.setOutput(true, "Course");
-                this.setColour(230);
-                this.setTooltip("Retrieve information from the database");
-                this.setHelpUrl("");
-            }
-        };
-
-        Blockly.Blocks['update_block'] = {
-            init: function () {
-                this.appendDummyInput()
-                    .appendField("UPDATE")
-                    .appendField(new Blockly.FieldDropdown([["Course", "Course"]]), "ENTITY")
-                    .appendField("where")
-                    .appendField(new Blockly.FieldTextInput("code"), "CRITERIA")
-                    .appendField("with data:");
-                this.appendValueInput("DATA")
-                    .setCheck("Course");
-                this.setPreviousStatement(true, null);
-                this.setNextStatement(true, null);
-                this.setColour(230);
-                this.setTooltip("Update course information in the database");
-                this.setHelpUrl("");
-            }
-        };
 
         // Define other custom Blockly blocks (DELETE, CHECK_PREREQUISITE, CHECK_IF_TAKEN, GENERATE) here
 
