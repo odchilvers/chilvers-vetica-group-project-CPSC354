@@ -77,7 +77,11 @@ Blockly.JavaScript['find_course'] = function(block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
 
     // Generate code to find a course using the provided values
-    var code = 'findCourse("' + value_course_code + '");\n';
+    // var code = 'findCourse("' + value_course_code + '");\n';
+    var code = `find_course(Code, Course) :-
+    course(Code, Name, Credits, Semester, Difficulty, Prerequisites),
+    Course = course(Code, Name, Credits, Semester, Difficulty, Prerequisites).`;
+
     return code;
 };
 

@@ -145,12 +145,17 @@
 
         // Generate function for demonstration
         function generateCode() {
-            // Retrieve and process Blockly code to generate the four-year plan
+            // Retrieve and process Blockly code to generate the Prolog code
             var code = Blockly.JavaScript.workspaceToCode(workspace);
-            // Implement logic to generate the four-year plan based on the code (not shown here).
-            // Display the generated plan in the output section.
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
+
+            // Implement logic to use the generated code as needed.
+            // For example, display it in the output section.
             document.getElementById('code-generate-box').innerText = code;
         }
+
 
         // Generate function for demonstration
         function generatePlan() {
@@ -165,6 +170,9 @@
         function saveCode() {
             // Retrieve the generated code
             var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
 
             // Create a Blob object to store the code content as Prolog
             var blob = new Blob([code], { type: 'text/plain' });
