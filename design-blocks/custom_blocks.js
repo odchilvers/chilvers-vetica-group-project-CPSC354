@@ -56,17 +56,14 @@ Blockly.JavaScript['add_course'] = function(block) {
     return prologCode;
 };
 
-// Find Course Block
+// Find Course Block (standalone)
 Blockly.Blocks['find_course'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("Find Course");
-        this.appendValueInput("COURSE_CODE_INPUT")
-            .setCheck("String")
-            .appendField("Course Code:")
-            .appendField(new Blockly.FieldTextInput("default"), "COURSE_CODE_INPUT");
-        this.setOutput(true, "find_course");
         this.setColour(230);
+        this.setPreviousStatement(false); // Disable connection from the top
+        this.setNextStatement(false);     // Disable connection from the bottom
+        this.appendDummyInput()
+            .appendField("Set up Find Course");
         this.setTooltip("Find information about a course");
         this.setHelpUrl("");
     }
@@ -74,8 +71,6 @@ Blockly.Blocks['find_course'] = {
 
 // JavaScript Function for Find Course Blockly Block
 Blockly.JavaScript['find_course'] = function(block) {
-    var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
-
     // Generate code to find a course using the provided values
     // var code = 'findCourse("' + value_course_code + '");\n';
     var code = `find_course(Code, Course) :-
@@ -85,28 +80,13 @@ Blockly.JavaScript['find_course'] = function(block) {
     return code;
 };
 
-// Update Course Block
+// Update Course Block (standalone)
 Blockly.Blocks['update_course'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("Update Course");
-        this.appendValueInput("FIND_COURSE")
-            .setCheck("find_course")
-            .appendField("Find Course:");
-        this.appendDummyInput()
-            .appendField("where")
-            .appendField(new Blockly.FieldDropdown([
-                ["Course Code", "code"],
-                ["Course Name", "name"],
-                ["Credits", "credits"],
-                ["Semester", "semester"],
-                ["Difficulty Score", "difficulty_score"],
-                ["Prerequisite", "prerequisite"]
-            ]), "CRITERIA");
-        this.appendDummyInput()
-            .appendField(" = ")
-            .appendField(new Blockly.FieldTextInput("default"), "DATA_UPDATE");
         this.setColour(230);
+        this.setOutput(false);
+        this.appendDummyInput()
+            .appendField("Set Up Update Course");
         this.setTooltip("Update course information");
         this.setHelpUrl("");
     }
@@ -114,29 +94,30 @@ Blockly.Blocks['update_course'] = {
 
 // JavaScript Function for Update Course Blockly Block
 Blockly.JavaScript['update_course'] = function(block) {
-    var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
-    var criteria = block.getFieldValue('CRITERIA');
-    var dataUpdate = block.getFieldValue('DATA_UPDATE');
-
     // Generate code to update a course using the provided criteria and data
-    var code = 'updateCourse(' + find_course_block + ', "' + criteria + '", "' + dataUpdate + '");\n';
+    var code = `update_course(CourseCode, Attribute, NewValue) :-
+    retract(course(CourseCode, CourseName, Credits, Semester, DifficultyScore, Prerequisites)),
+    (Attribute = 'name' -> NewCourse = course(CourseCode, NewValue, Credits, Semester, DifficultyScore, Prerequisites);
+     Attribute = 'credits' -> NewCourse = course(CourseCode, CourseName, NewValue, Semester, DifficultyScore, Prerequisites);
+     Attribute = 'semester' -> NewCourse = course(CourseCode, CourseName, Credits, NewValue, DifficultyScore, Prerequisites);
+     Attribute = 'difficulty_score' -> NewCourse = course(CourseCode, CourseName, Credits, Semester, NewValue, Prerequisites);
+     Attribute = 'prerequisite' -> NewCourse = course(CourseCode, CourseName, Credits, Semester, DifficultyScore, NewValue)),
+    assertz(NewCourse).`;
     return code;
 };
 
-// Delete Course Block
+// Delete Course Block (standalone)
 Blockly.Blocks['delete_course'] = {
     init: function() {
-        this.appendDummyInput()
-            .appendField("Delete Course");
-        this.appendValueInput("FIND_COURSE")
-            .setCheck('find_course')
-            .setAlign(Blockly.ALIGN_RIGHT)
-            .appendField("Find Course:");
         this.setColour(230);
-        this.setTooltip("Delete a course from the database");
+        this.setOutput(false);
+        this.appendDummyInput()
+            .appendField("Set Up Delete Course");
+        this.setTooltip("Delete course information");
         this.setHelpUrl("");
     }
 };
+
 
 // JavaScript Function for delete Course Blockly Block
 Blockly.JavaScript['delete_course'] = function(block) {
