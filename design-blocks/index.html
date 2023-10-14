@@ -148,6 +148,10 @@
             // Retrieve and process Blockly code to generate the Prolog code
             var code = Blockly.JavaScript.workspaceToCode(workspace);
 
+            // Include the dynamic declaration at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            code = dynamicDeclaration + code;
+
             // Remove any trailing semicolon if present
             code = code.trim().replace(/;$/, '');
 
@@ -170,6 +174,10 @@
         function saveCode() {
             // Retrieve the generated code
             var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Include the dynamic declaration at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            code = dynamicDeclaration + code;
 
             // Remove any trailing semicolon if present
             code = code.trim().replace(/;$/, '');

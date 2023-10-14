@@ -142,7 +142,12 @@ Blockly.Blocks['delete_course'] = {
 Blockly.JavaScript['delete_course'] = function(block) {
     var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
     // Generate code to delete a course using the provided course code
-    var code = 'deleteCourse(' + find_course_block + ');\n';
+    // var code = 'deleteCourse(' + find_course_block + ');\n';
+    var code = ` delete_course(Code) :-
+    (retract(course(Code, _, _, _, _, _)) ->
+        write('Course '), write(Code), write(' deleted.'), nl;
+        write('Course '), write(Code), write(' not found.'), nl
+    ).`;
     return code;
 };
 
