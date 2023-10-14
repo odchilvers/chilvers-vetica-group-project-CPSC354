@@ -29,3 +29,7 @@
 
 ## Milestone1
 [Link to Milestone1](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/milestone1)
+
+## Prototype
+[Link to Prototype](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/prototype/index.html)
+
