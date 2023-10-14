@@ -12,9 +12,10 @@ Blockly.Blocks['add_course'] = {
         this.appendDummyInput()
             .appendField("Credits:")
             .appendField(new Blockly.FieldNumber(0, 0, 3), "CREDITS_INPUT");
+        // Modify the "Semester" input to use a dropdown
         this.appendDummyInput()
             .appendField("Semester:")
-            .appendField(new Blockly.FieldTextInput("default"), "SEMESTER_INPUT");
+            .appendField(new Blockly.FieldDropdown([["Fall", "Fall"], ["Spring", "Spring"], ["Fall or Spring", "Fall or Spring"]]), "SEMESTER_INPUT");
         this.appendDummyInput()
             .appendField("Difficulty Score:")
             .appendField(new Blockly.FieldNumber(0, 0, 3), "DIFFICULTY_SCORE_INPUT");
