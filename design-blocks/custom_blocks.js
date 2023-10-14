@@ -1,6 +1,6 @@
 // Add Course Block
 Blockly.Blocks['add_course'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Add Course");
         this.appendDummyInput()
@@ -28,7 +28,7 @@ Blockly.Blocks['add_course'] = {
 };
 
 // JavaScript Function for Add Course Blockly Block
-Blockly.JavaScript['add_course'] = function (block) {
+Blockly.JavaScript['add_course'] = function(block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
     var value_course_name = block.getFieldValue('COURSE_NAME_INPUT');
     var value_credits = block.getFieldValue('CREDITS_INPUT');
@@ -42,16 +42,23 @@ Blockly.JavaScript['add_course'] = function (block) {
         "'" + value_course_name + "'" + ', ' +
         value_credits + ', ' +
         "'" + value_semester + "'" + ', ' + // Enclose value_semester in single quotes
-        value_difficulty_score + ', ' +
-        '[]).';
+        value_difficulty_score + ', ';
 
+    // Check if value_prerequisite is "None" and handle accordingly
+    if (value_prerequisite !== 'None') {
+        prologCode += "[" + value_prerequisite + "]";
+    } else {
+        prologCode += "[]";
+    }
+
+    prologCode += ").";
 
     return prologCode;
 };
 
 // Find Course Block
 Blockly.Blocks['find_course'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Find Course");
         this.appendValueInput("COURSE_CODE_INPUT")
@@ -66,7 +73,7 @@ Blockly.Blocks['find_course'] = {
 };
 
 // JavaScript Function for Find Course Blockly Block
-Blockly.JavaScript['find_course'] = function (block) {
+Blockly.JavaScript['find_course'] = function(block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
 
     // Generate code to find a course using the provided values
@@ -76,7 +83,7 @@ Blockly.JavaScript['find_course'] = function (block) {
 
 // Update Course Block
 Blockly.Blocks['update_course'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Update Course");
         this.appendValueInput("FIND_COURSE")
@@ -102,7 +109,7 @@ Blockly.Blocks['update_course'] = {
 };
 
 // JavaScript Function for Update Course Blockly Block
-Blockly.JavaScript['update_course'] = function (block) {
+Blockly.JavaScript['update_course'] = function(block) {
     var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
     var criteria = block.getFieldValue('CRITERIA');
     var dataUpdate = block.getFieldValue('DATA_UPDATE');
@@ -114,7 +121,7 @@ Blockly.JavaScript['update_course'] = function (block) {
 
 // Delete Course Block
 Blockly.Blocks['delete_course'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Delete Course");
         this.appendValueInput("FIND_COURSE")
@@ -128,7 +135,7 @@ Blockly.Blocks['delete_course'] = {
 };
 
 // JavaScript Function for delete Course Blockly Block
-Blockly.JavaScript['delete_course'] = function (block) {
+Blockly.JavaScript['delete_course'] = function(block) {
     var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
     // Generate code to delete a course using the provided course code
     var code = 'deleteCourse(' + find_course_block + ');\n';
@@ -137,7 +144,7 @@ Blockly.JavaScript['delete_course'] = function (block) {
 
 // Generate Plan Block
 Blockly.Blocks['generate_plan'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Generate Plan");
         this.appendValueInput("ARGUMENT")
@@ -150,7 +157,7 @@ Blockly.Blocks['generate_plan'] = {
 
 // Generate Code Block
 Blockly.Blocks['generate_code'] = {
-    init: function () {
+    init: function() {
         this.appendDummyInput()
             .appendField("Generate Code");
         this.appendValueInput("ARGUMENT")
