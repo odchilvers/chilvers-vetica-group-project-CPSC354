@@ -192,7 +192,7 @@ Blockly.Blocks['select_major'] = {
                 ["Data Science", "Data Science"],
                 ["Software Engineering", "Software Engineering"],
                 ["Computer Engineering", "Computer Engineering"],
-                ["Electrical Engineering", "Computer Engineering"]
+                ["Electrical Engineering", "Electrical Engineering"]
             ]), "MAJOR_SELECTION");
         this.setOutput(false);
         this.setColour('#A165F1');

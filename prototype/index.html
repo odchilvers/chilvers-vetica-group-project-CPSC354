@@ -69,7 +69,7 @@
         </category>
 
         <category name="Input Blocks" colour="#A165F1">
-            
+
             <!-- Add Course Block -->
             <block type="add_course"></block>
 
@@ -124,15 +124,47 @@
             document.getElementById('code-generate-box').innerText = code;
         }
 
-
-        // Generate function for demonstration
         function generatePlan() {
             // Retrieve and process Blockly code to generate the four-year plan
             var code = Blockly.JavaScript.workspaceToCode(workspace);
-            // Implement logic to generate the four-year plan based on the code (not shown here).
-            // Display the generated plan in the output section.
-            document.getElementById('four-year-plan').innerText = "Generated plan will appear here.";
+
+            // Include the dynamic and discontiguous declarations at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = dynamicDeclaration + discontiguousDeclaration + code;
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
+
+            // Extract course code and credits from the Prolog code
+            const courseInfo = extractCourseInfo(code);
+
+            // Create a formatted string of course code and credits for display
+            const courseInfoString = courseInfo.map(course => `${course.code} - ${course.credits}`).join('\n');
+
+            // Display the extracted course code and credits
+            document.getElementById('four-year-plan').innerText = courseInfoString;
         }
+
+        function extractCourseInfo(code) {
+            // Define a regular expression to match course facts and extract code and credits
+            const courseFactPattern = /course\(([^,]+), [^,]+, ([^,]+)/g;
+
+            const courseInfo = [];
+            let match;
+
+            // Find and extract course code and credits
+            while ((match = courseFactPattern.exec(code)) !== null) {
+                const courseCode = match[1];
+                const courseCredits = match[2];
+                courseInfo.push({ code: courseCode, credits: courseCredits });
+            }
+
+            return courseInfo;
+        }
+
+
+
 
         // Function to save code as a file
         function saveCode() {
