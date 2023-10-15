@@ -27,6 +27,7 @@
 * Step 6: Repeat Steps 3 & 4 for each course to be added
 * Step 7: Click "Generate Code" to view the Prolog code
 * Step 8: Click "Save Code" to save the Prolog code
+* Step 9: Click "Generate Four-Year Plan" to view all of the courses and credits added
 
 ## Recreate Demo
 
