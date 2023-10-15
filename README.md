@@ -24,12 +24,12 @@
 
 * The Student Program Evaluation Generator intersects with parsing, interpretation, and compilation in several ways. For parsing, the program needs to understand and interpret the data for the courses, catalogs, and program evaluation. A key part is being able to efficiently recognise elements like course numbers, titles, descriptions, and requirements. This is a crucial process for extracting and organising the relevant information from the database. With interpretation, the program is able to execute the code and process the data directly. This allows for it to interpret the course catalog and program evaluation to produce the four year plan. From this, the program can output a coherent plan for the data by making decisions based on the algorithms. Lastly compilation, the program can be optimised for efficiency if there are complex algorithms or operations. This would require transforming high-level instructions into more efficient low-level operations.
 
-## Index.html
+## Index.html (changing version)
 [Link to Program Generator](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/design-blocks/index.html)
 
-## Milestone1
+## Milestone1 (v1)
 [Link to Milestone1](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/milestone1)
 
-## Prototype
+## Prototype (v2)
 [Link to Prototype](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/prototype/index.html)
 
