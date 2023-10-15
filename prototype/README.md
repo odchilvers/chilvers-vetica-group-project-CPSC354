@@ -40,7 +40,7 @@
 * Step 4: Place "Add Course" block
 * Step 5: Fill out information
 * (cpsc230, Python, 3, Fall or Spring, 1, None)
-* (cpsc231, Java, 3, Fall or Spring, 2, cpsc230)
+* (cpsc231, Java, 2, Fall or Spring, 2, cpsc230)
 * Step 6: Place "Select Major" block
 * Step 7: Fill out information
 * Computer Science
@@ -54,25 +54,35 @@
 * Step 15: Follow commands below
 ```
 consult('generated_code.pl').
-
+```
+```
 total_credits(Total).
-
+```
+```
 average_difficulty_score(Avg).
-
+```
+```
 find_course('cpsc230', Course).
-
+```
+```
 update_course('cpsc231', 'credits', 3).
-
+```
+```
 find_course('cpsc231', Course).
-
+```
+```
 total_credits(Total).
-
+```
+```
 delete_course(cpsc231).
-
+```
+```
 find_course('cpsc231', Course).
-
+```
+```
 total_credits(Total).
-
+```
+```
 average_difficulty_score(Avg).
 ```
 * Expected Results
