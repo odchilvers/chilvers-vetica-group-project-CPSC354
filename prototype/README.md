@@ -35,10 +35,4 @@
 ## Link to Slides
 [Link to Slides](https://docs.google.com/presentation/d/1N27hrIdU2opAgURgP_sITBGFSBmhPWlpgiVvcm48WoU/edit?usp=sharing)
 
-## Index.html
-[Link to Program Generator](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/design-blocks/index.html)
-
-## Milestone1
-[Link to Milestone1](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/milestone1)
-
 
