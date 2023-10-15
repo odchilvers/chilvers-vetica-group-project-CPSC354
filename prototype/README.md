@@ -52,39 +52,30 @@
 * Step 13: Open terminal or powershell
 * Step 14: Locate "generated_code.pl"
 * Step 15: Follow commands below
-```
+
+``` prolog
 consult('generated_code.pl').
-```
-```
+``` prolog
 total_credits(Total).
-```
-```
+``` prolog
 average_difficulty_score(Avg).
-```
 ```
 find_course('cpsc230', Course).
 ```
-```
 update_course('cpsc231', 'credits', 3).
-```
 ```
 find_course('cpsc231', Course).
 ```
-```
 total_credits(Total).
-```
 ```
 delete_course(cpsc231).
 ```
-```
 find_course('cpsc231', Course).
-```
 ```
 total_credits(Total).
 ```
-```
 average_difficulty_score(Avg).
-```
+
 * Expected Results
 ```
 ?- consult('generated_code.pl').
