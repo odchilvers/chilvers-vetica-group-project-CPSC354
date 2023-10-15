@@ -68,13 +68,23 @@
 
         </category>
 
-        <category name="Action Blocks" colour="#A165F1">
+        <category name="Input Blocks" colour="#A165F1">
             
             <!-- Add Course Block -->
             <block type="add_course"></block>
 
+            <!-- Select Major Options -->
+            <block type="select_major"></block>
+
+        </category>
+
+        <category name="Action Blocks" colour="#DB69E2">
+
             <!-- Calculate Average Difficulty Block -->
             <block type="calculate_avg_difficulty"></block>
+
+            <!-- Calculate Average Difficulty Block -->
+            <block type="total_credits"></block>
 
         </category>
 
@@ -103,6 +113,9 @@
             var dynamicDeclaration = ':- dynamic course/6.\n';
             code = dynamicDeclaration + code;
 
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = discontiguousDeclaration + code;
+
             // Remove any trailing semicolon if present
             code = code.trim().replace(/;$/, '');
 
@@ -129,6 +142,9 @@
             // Include the dynamic declaration at the beginning of the code
             var dynamicDeclaration = ':- dynamic course/6.\n';
             code = dynamicDeclaration + code;
+
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = discontiguousDeclaration + code;
 
             // Remove any trailing semicolon if present
             code = code.trim().replace(/;$/, '');

@@ -1,6 +1,6 @@
 // Add Course Block
 Blockly.Blocks['add_course'] = {
-    init: function() {
+    init: function () {
         this.appendDummyInput()
             .appendField("Add Course");
         this.appendDummyInput()
@@ -21,7 +21,7 @@ Blockly.Blocks['add_course'] = {
             .appendField(new Blockly.FieldNumber(0, 0, 3), "DIFFICULTY_SCORE_INPUT");
         this.appendDummyInput()
             .appendField("Prerequisite Course:")
-            .appendField(new Blockly.FieldTextInput("default"), "PREREQ_INPUT")
+            .appendField(new Blockly.FieldTextInput("None"), "PREREQ_INPUT")
         this.setColour('#A165F1');
         this.setTooltip("Add a new course to the database");
         this.setHelpUrl("");
@@ -29,7 +29,7 @@ Blockly.Blocks['add_course'] = {
 };
 
 // JavaScript Function for Add Course Blockly Block
-Blockly.JavaScript['add_course'] = function(block) {
+Blockly.JavaScript['add_course'] = function (block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
     var value_course_name = block.getFieldValue('COURSE_NAME_INPUT');
     var value_credits = block.getFieldValue('CREDITS_INPUT');
@@ -59,7 +59,7 @@ Blockly.JavaScript['add_course'] = function(block) {
 
 // Find Course Block (standalone)
 Blockly.Blocks['find_course'] = {
-    init: function() {
+    init: function () {
         this.setColour('#30A3E5');
         this.setPreviousStatement(false); // Disable connection from the top
         this.setNextStatement(false);     // Disable connection from the bottom
@@ -71,7 +71,7 @@ Blockly.Blocks['find_course'] = {
 };
 
 // JavaScript Function for Find Course Blockly Block
-Blockly.JavaScript['find_course'] = function(block) {
+Blockly.JavaScript['find_course'] = function (block) {
     // Generate code to find a course using the provided values
     // var code = 'findCourse("' + value_course_code + '");\n';
     var code = `find_course(Code, Course) :-
@@ -83,7 +83,7 @@ Blockly.JavaScript['find_course'] = function(block) {
 
 // Update Course Block (standalone)
 Blockly.Blocks['update_course'] = {
-    init: function() {
+    init: function () {
         this.setColour('#30A3E5');
         this.setOutput(false);
         this.appendDummyInput()
@@ -94,7 +94,7 @@ Blockly.Blocks['update_course'] = {
 };
 
 // JavaScript Function for Update Course Blockly Block
-Blockly.JavaScript['update_course'] = function(block) {
+Blockly.JavaScript['update_course'] = function (block) {
     // Generate code to update a course using the provided criteria and data
     var code = `update_course(CourseCode, Attribute, NewValue) :-
     retract(course(CourseCode, CourseName, Credits, Semester, DifficultyScore, Prerequisites)),
@@ -109,7 +109,7 @@ Blockly.JavaScript['update_course'] = function(block) {
 
 // Delete Course Block (standalone)
 Blockly.Blocks['delete_course'] = {
-    init: function() {
+    init: function () {
         this.setColour('#30A3E5');
         this.setOutput(false);
         this.appendDummyInput()
@@ -121,7 +121,7 @@ Blockly.Blocks['delete_course'] = {
 
 
 // JavaScript Function for delete Course Blockly Block
-Blockly.JavaScript['delete_course'] = function(block) {
+Blockly.JavaScript['delete_course'] = function (block) {
     var find_course_block = Blockly.JavaScript.statementToCode(block, 'FIND_COURSE');
     // Generate code to delete a course using the provided course code
     // var code = 'deleteCourse(' + find_course_block + ');\n';
@@ -133,36 +133,10 @@ Blockly.JavaScript['delete_course'] = function(block) {
     return code;
 };
 
-// Generate Plan Block
-Blockly.Blocks['generate_plan'] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("Generate Plan");
-        this.appendValueInput("ARGUMENT")
-            .setCheck(null);
-        this.setColour(230);
-        this.setTooltip("Generate a four-year plan");
-        this.setHelpUrl("");
-    }
-};
-
-// Generate Code Block
-Blockly.Blocks['generate_code'] = {
-    init: function() {
-        this.appendDummyInput()
-            .appendField("Generate Code");
-        this.appendValueInput("ARGUMENT")
-            .setCheck(null);
-        this.setColour(230);
-        this.setTooltip("Generate the code");
-        this.setHelpUrl("");
-    }
-};
-
 // Find Course Block (standalone)
 Blockly.Blocks['calculate_avg_difficulty'] = {
-    init: function() {
-        this.setColour('#A165F1');
+    init: function () {
+        this.setColour('#DB69E2');
         this.setPreviousStatement(false); // Disable connection from the top
         this.setNextStatement(false);     // Disable connection from the bottom
         this.appendDummyInput()
@@ -173,7 +147,7 @@ Blockly.Blocks['calculate_avg_difficulty'] = {
 };
 
 // JavaScript Function for Find Course Blockly Block
-Blockly.JavaScript['calculate_avg_difficulty'] = function(block) {
+Blockly.JavaScript['calculate_avg_difficulty'] = function (block) {
     // Generate code to find a course using the provided values
     // var code = 'findCourse("' + value_course_code + '");\n';
     var code = `average_difficulty_score(Average) :-
@@ -184,3 +158,52 @@ Blockly.JavaScript['calculate_avg_difficulty'] = function(block) {
 
     return code;
 };
+
+// Find Course Block (standalone)
+Blockly.Blocks['total_credits'] = {
+    init: function () {
+        this.setColour('#DB69E2');
+        this.setPreviousStatement(false); // Disable connection from the top
+        this.setNextStatement(false);     // Disable connection from the bottom
+        this.appendDummyInput()
+            .appendField("Total Credits");
+        this.setTooltip("Determine the total credits across the semester");
+        this.setHelpUrl("");
+    }
+};
+
+// JavaScript Function for Find Course Blockly Block
+Blockly.JavaScript['total_credits'] = function (block) {
+    // Generate code to find a course using the provided values
+    // var code = 'findCourse("' + value_course_code + '");\n';
+    var code = `total_credits(TotalCredits) :-
+    findall(Credits, course(_, _, Credits, _, _, _), CreditsList),
+    sum_list(CreditsList, TotalCredits).`;
+
+    return code;
+};
+
+Blockly.Blocks['select_major'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Select Major:")
+            .appendField(new Blockly.FieldDropdown([
+                ["Computer Science", "Computer Science"],
+                ["Data Science", "Data Science"],
+                ["Software Engineering", "Software Engineering"],
+                ["Computer Engineering", "Computer Engineering"],
+                ["Electrical Engineering", "Computer Engineering"]
+            ]), "MAJOR_SELECTION");
+        this.setOutput(false);
+        this.setColour('#A165F1');
+        this.setTooltip("Select a major from the dropdown.");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.JavaScript['select_major'] = function (block) {
+    var selectedMajor = block.getFieldValue('MAJOR_SELECTION');
+    var code = `student_major('${selectedMajor}').`;
+    return code;
+};
+
