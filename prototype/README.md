@@ -31,7 +31,6 @@
 * Step 10: Grab desired blocks from within "Action Blocks"
 * Step 11: Click "Generate Code" to view the Prolog code
 * Step 12: Click "Save Code" to save the Prolog code
-* Step 13: Click "Generate Four-Year Plan" to view all of the courses and credits added
 
 ## Recreate Demo
 * Step 1: Open "Set Up Blocks"
@@ -48,10 +47,9 @@
 * Step 9: Grab all blocks from within "Action Blocks"
 * Step 10: Click "Generate Code" to view the Prolog code
 * Step 11: Click "Save Code" to save the Prolog code
-* Step 12: Click "Generate Four-Year Plan" to view all of the courses and credits added
-* Step 13: Open terminal or powershell
-* Step 14: Locate "generated_code.pl"
-* Step 15: Follow commands below
+* Step 12: Open terminal or powershell
+* Step 13: Locate "generated_code.pl"
+* Step 14: Follow commands below
 
 ```
 consult('generated_code.pl').
