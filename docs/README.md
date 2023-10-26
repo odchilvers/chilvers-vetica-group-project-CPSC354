@@ -13,9 +13,6 @@
 
 * Course: CPSC 354-01 Programming Languages
 
-# Prototype
-[Link to Prototype](https://odchilvers.github.io/chilvers-vetica-group-project-CPSC354/prototype/index.html)
-
 # Reproducible Instructions
 
 ## Test Software
