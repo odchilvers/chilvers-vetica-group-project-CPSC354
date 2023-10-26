@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Program Evaluation Generator</title>
+    <!-- Replace the URLs with Google's CDN -->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="custom_blocks.js"></script>
+
+    <script>
+        function getCourseInfo(courseCode) {
+            fetch(`/getCourseInfo?code=${courseCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Process and display the data on your webpage
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Student Program Evaluation Generator</h1>
+    </header>
+    <main>
+        <a href="https://github.com/odchilvers/chilvers-vetica-group-project-CPSC354">GitHub Source</a>
+        <section id="input-section">
+            <h2>Student Information</h2>
+            <div id="blocklyDiv" style="height: 400px; width: 100%;"></div>
+            <button onclick="generateCode()">Generate Code</button>
+            <button onclick="generatePlan()">Generate Four-Year Plan</button>
+            <button onclick="saveCode()">Save Code</button>
+        </section>
+
+        <section id="output-section">
+            <h2>Code</h2>
+            <div id="code-generate-box">
+                <!-- Generated code goes here -->
+            </div>
+            <h2>Four-Year Plan</h2>
+            <div id="four-year-plan">
+                <!-- Generated four-year plan goes here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Define the Blockly toolbox with custom blocks -->
+    <xml id="toolbox" style="display: none">
+        <!-- Custom Blocks Category -->
+        <category name="Set Up Blocks" colour="#30A3E5">
+
+            <!-- Find Course Block -->
+            <block type="find_course"></block>
+
+            <!-- Update Course Block -->
+            <block type="update_course"></block>
+
+            <!-- Delete Course Block -->
+            <block type="delete_course"></block>
+
+        </category>
+
+        <category name="Input Blocks" colour="#A165F1">
+
+            <!-- Add Course Block -->
+            <block type="add_course"></block>
+
+            <!-- Select Major Options -->
+            <block type="select_major"></block>
+
+        </category>
+
+        <category name="Action Blocks" colour="#DB69E2">
+
+            <!-- Calculate Average Difficulty Block -->
+            <block type="calculate_avg_difficulty"></block>
+
+            <!-- Calculate Average Difficulty Block -->
+            <block type="total_credits"></block>
+
+        </category>
+
+        <!-- Other Toolbox Categories (if needed) -->
+    </xml>
+
+    <footer>
+        <p>&copy; 2023 Student Program Evaluation Generator</p>
+    </footer>
+
+    <script>
+        // Initialize Blockly
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox'),
+            scrollbars: true
+        });
+
+        // Define other custom Blockly blocks (DELETE, CHECK_PREREQUISITE, CHECK_IF_TAKEN, GENERATE) here
+
+        // Generate function for demonstration
+        function generateCode() {
+            // Retrieve and process Blockly code to generate the Prolog code
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Include the dynamic declaration at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            code = dynamicDeclaration + code;
+
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = discontiguousDeclaration + code;
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
+
+            // Implement logic to use the generated code as needed.
+            // For example, display it in the output section.
+            document.getElementById('code-generate-box').innerText = code;
+        }
+
+        function generatePlan() {
+            // Retrieve and process Blockly code to generate the four-year plan
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Include the dynamic and discontiguous declarations at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = dynamicDeclaration + discontiguousDeclaration + code;
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
+
+            // Extract course code and credits from the Prolog code
+            const courseInfo = extractCourseInfo(code);
+
+            // Create a formatted string of course code and credits for display
+            const courseInfoString = courseInfo.map(course => `${course.code} - ${course.credits}`).join('\n');
+
+            // Display the extracted course code and credits
+            document.getElementById('four-year-plan').innerText = courseInfoString;
+        }
+
+        function extractCourseInfo(code) {
+            // Define a regular expression to match course facts and extract code and credits
+            const courseFactPattern = /course\(([^,]+), [^,]+, ([^,]+)/g;
+
+            const courseInfo = [];
+            let match;
+
+            // Find and extract course code and credits
+            while ((match = courseFactPattern.exec(code)) !== null) {
+                const courseCode = match[1];
+                const courseCredits = match[2];
+                courseInfo.push({ code: courseCode, credits: courseCredits });
+            }
+
+            return courseInfo;
+        }
+
+
+
+
+        // Function to save code as a file
+        function saveCode() {
+            // Retrieve the generated code
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // Include the dynamic declaration at the beginning of the code
+            var dynamicDeclaration = ':- dynamic course/6.\n';
+            code = dynamicDeclaration + code;
+
+            var discontiguousDeclaration = ':- discontiguous course/6.\n';
+            code = discontiguousDeclaration + code;
+
+            // Remove any trailing semicolon if present
+            code = code.trim().replace(/;$/, '');
+
+            // Create a Blob object to store the code content as Prolog
+            var blob = new Blob([code], { type: 'text/plain' });
+
+            // Create a temporary URL for the Blob
+            var url = URL.createObjectURL(blob);
+
+            // Create an anchor element to trigger the download
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'generated_code.pl'; // Specify the filename with a .pl extension
+
+            // Programmatically click the anchor element to trigger the download
+            a.click();
+
+            // Release the Blob URL
+            URL.revokeObjectURL(url);
+        }
+
+
+    </script>
+
+</body>
+
+</html>
