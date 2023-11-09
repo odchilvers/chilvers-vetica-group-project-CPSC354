@@ -38,6 +38,9 @@
             <button onclick="generateCode()">Generate Code</button>
             <button onclick="generatePlan()">Generate Four-Year Plan</button>
             <button onclick="saveCode()">Save Code</button>
+            <button onclick="saveBlocks()">Save Blocks</button>
+            <button onclick="loadBlocks()">Load Blocks</button>
+            <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
         </section>
 
         <section id="output-section">
@@ -163,9 +166,6 @@
             return courseInfo;
         }
 
-
-
-
         // Function to save code as a file
         function saveCode() {
             // Retrieve the generated code
@@ -199,6 +199,47 @@
             URL.revokeObjectURL(url);
         }
 
+        function saveBlocks() {
+            // Retrieve the workspace XML
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            var xmlText = Blockly.Xml.domToPrettyText(xml);
+
+            // Create a Blob object with the XML content
+            var blob = new Blob([xmlText], { type: 'text/xml' });
+
+            // Create a temporary URL for the Blob
+            var url = URL.createObjectURL(blob);
+
+            // Create an anchor element to trigger the download
+            var a = document.createElement('a');
+            a.href = url;
+
+            // Specify the filename with a .xml extension
+            a.download = 'saved_blocks.xml';
+
+            // Programmatically click the anchor element to trigger the download
+            a.click();
+
+            // Release the Blob URL
+            URL.revokeObjectURL(url);
+
+            alert('Blocks saved successfully!');
+        }
+
+
+        function loadBlocks() {
+            document.getElementById('loadInput').click();
+        }
+
+        function loadBlocksFile(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var xml = Blockly.utils.xml.textToDom(e.target.result);
+                Blockly.Xml.appendDomToWorkspace(xml, workspace);
+            };
+            reader.readAsText(file);
+        }
 
     </script>
 
