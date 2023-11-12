@@ -1,1 +1,3 @@
-
+## Feedback
+We did not receive any feedback from the peer review, so we conducted our own review of our project which provided us with a plan for going forward with improvements. Such improvements include adding the 'Save Blocks' and 'Load Blocks' buttons which allows users to save the blocks they had put into the program and reupload them without needing to rebuild them from scratch. Since there are so many blocks needed to build the program, loading in an already made program would make this process smoother and easier for users. 
+As we continue the development of our project, we plan to provide a block which allows user to import an existing schedule and having the program separate courses into semesters. Once courses can be separated into semesters, we are closer to achieving a generatable four-year program with requisites fufilled.
