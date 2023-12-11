@@ -16,8 +16,8 @@
 [Link to Program Generator](https://odchilvers.github.io/student-program-evaluation-generator/src/index.html)
 
 # Links to the Videos
-[Overview](https://www.youtube.com/watch?v=BGR30mOYPYA)
-[Technical](https://www.youtube.com/watch?v=LFRfoIHEhdU)
+* [Overview](https://www.youtube.com/watch?v=BGR30mOYPYA)
+* [Technical](https://www.youtube.com/watch?v=LFRfoIHEhdU)
 
 # Motivation
 
