@@ -207,3 +207,45 @@ Blockly.JavaScript['select_major'] = function (block) {
     return code;
 };
 
+Blockly.Blocks['filter_courses'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Filter Courses");
+        this.appendValueInput("SEMESTER")
+            .setCheck("String")
+            .appendField("Semester");
+        this.appendValueInput("MAJOR")
+            .setCheck("String")
+            .appendField("Major");
+        this.appendValueInput("DIFFICULTY")
+            .setCheck("Number")
+            .appendField("Max Difficulty Score");
+        this.appendValueInput("CREDITS")
+            .setCheck("Number")
+            .appendField("Min Credits");
+        this.setInputsInline(false);
+        this.setOutput(true, "Array");
+        this.setColour('#F2A749');
+        this.setTooltip("Filter courses based on specified criteria");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.JavaScript['filter_courses'] = function (block) {
+    var semester = Blockly.JavaScript.valueToCode(block, 'SEMESTER', Blockly.JavaScript.ORDER_ATOMIC);
+    var major = Blockly.JavaScript.valueToCode(block, 'MAJOR', Blockly.JavaScript.ORDER_ATOMIC);
+    var difficulty = Blockly.JavaScript.valueToCode(block, 'DIFFICULTY', Blockly.JavaScript.ORDER_ATOMIC);
+    var credits = Blockly.JavaScript.valueToCode(block, 'CREDITS', Blockly.JavaScript.ORDER_ATOMIC);
+
+    var code = `filterCourses(${semester}, ${major}, ${difficulty}, ${credits})`;
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+function filterCourses(semester, major, maxDifficulty, minCredits) {
+    return coursesData.filter(course => 
+        (!semester || course.semester === semester) &&
+        (!major || course.major === major) &&
+        (!maxDifficulty || course.difficultyScore <= maxDifficulty) &&
+        (!minCredits || course.credits >= minCredits)
+    );
+}
