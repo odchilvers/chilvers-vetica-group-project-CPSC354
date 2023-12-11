@@ -1,6 +1,3 @@
-
-# chilvers-vetica-group-project-CPSC354
-
 ## Project: Student Program Evaluation Generator
 
 ## Group Members
