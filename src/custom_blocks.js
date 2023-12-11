@@ -188,11 +188,21 @@ Blockly.Blocks['select_major'] = {
         this.appendDummyInput()
             .appendField("Select Major:")
             .appendField(new Blockly.FieldDropdown([
+                // Fowler Majors
                 ["Computer Science", "Computer Science"],
                 ["Data Science", "Data Science"],
                 ["Software Engineering", "Software Engineering"],
                 ["Computer Engineering", "Computer Engineering"],
-                ["Electrical Engineering", "Electrical Engineering"]
+                ["Electrical Engineering", "Electrical Engineering"],
+                // Schmid Majors
+                ["Biochemistry and Molecular Biology", "Biochemistry and Molecular Biology"],
+                ["Biological Sciences", "Biological Sciences"],
+                ["Chemistry", "Chemistry"],
+                ["Environmental Science and Policy", "Environmental Science and Policy"],
+                ["Mathematics and Civil Engineering, Joint Program, Chapman University/University of California, Irvine", "Mathematics and Civil Engineering, Joint Program, Chapman University/University of California, Irvine"],
+                ["Mathematics", "Mathematics"],
+                ["Physcs", "Physics"],
+                ["Philosophy", "Philosophy"]
             ]), "MAJOR_SELECTION");
         this.setOutput(false);
         this.setColour('#A165F1');
@@ -207,3 +217,38 @@ Blockly.JavaScript['select_major'] = function (block) {
     return code;
 };
 
+Blockly.Blocks['select_minor'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Select Minor:")
+            .appendField(new Blockly.FieldDropdown([
+                // Fowler Minors
+                ["Analytics", "Analytics"],
+                ["Computer Engineering", "Computer Engineering"],
+                ["Computer Science", "Computer Science"],
+                ["Electrical Engineering", "Electrical Engineering"],
+                ["Game Development Programming", "Game Development Programming"],
+                ["Information Security and Policy", "Information Security and Policy"]
+                // Schmid Minors
+                ["Biophysics", "Biophysics"],
+                ["Chemistry", "Chemistry"],
+                ["Computational Science", "Computational Science"],
+                ["Environmental Science", "Environmental Science"],
+                ["Mathematics", "Mathematics"],
+                ["Nutrition", "Nutrition"],
+                ["Organismal Biology", "Organismal Biology"],
+                ["Philosophy", "Philosophy"],
+                ["Physics", "Physics"]
+            ]), "MINOR_SELECTION");
+        this.setOutput(false);
+        this.setColour('#A165F1');
+        this.setTooltip("Select a minor from the dropdown.");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.JavaScript['select_minor'] = function (block) {
+    var selectedMinor = block.getFieldValue('MINOR_SELECTION');
+    var code = `student_minor('${selectedMinor}').`;
+    return code;
+};
