@@ -207,3 +207,34 @@ Blockly.JavaScript['select_major'] = function (block) {
     return code;
 };
 
+// Evaluate Eligibility Block
+Blockly.Blocks['evaluate_eligibility'] = {
+    init: function () {
+        this.setColour('#DB69E2');
+        this.setPreviousStatement(false); // Disable connection from the top
+        this.setNextStatement(false);     // Disable connection from the bottom
+        this.appendDummyInput()
+            .appendField("Evaluate Eligibility for Course");
+        this.appendDummyInput()
+            .appendField("Student Major:")
+            .appendField(new Blockly.FieldVariable("student", null, ["Type"], ["student"]), "STUDENT_VAR");
+        this.appendDummyInput()
+            .appendField("Course Code:")
+            .appendField(new Blockly.FieldTextInput("default"), "COURSE_CODE_INPUT");
+        this.setTooltip("Evaluate whether a student is eligible for a course based on prerequisites");
+        this.setHelpUrl("");
+    }
+};
+
+// JavaScript Function for Evaluate Eligibility Blockly Block
+Blockly.JavaScript['evaluate_eligibility'] = function (block) {
+    var studentVar = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('STUDENT_VAR'), Blockly.Variables.NAME_TYPE);
+    var courseCode = block.getFieldValue('COURSE_CODE_INPUT');
+
+    // Generate code to evaluate eligibility based on student major and prerequisites
+    var code = `evaluate_eligibility(${studentVar}, '${courseCode}').`;
+
+    return code;
+};
+
