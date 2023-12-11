@@ -8,6 +8,7 @@
     <!-- Replace the URLs with Google's CDN -->
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="custom_blocks.js"></script>
+    <script src="defaultBlocks.js"></script>
 
     <script>
         function getCourseInfo(courseCode) {
@@ -104,6 +105,9 @@
             toolbox: document.getElementById('toolbox'),
             scrollbars: true
         });
+
+        var defaultBlocksDom = Blockly.utils.xml.textToDom(window.defaultBlocks);
+        Blockly.Xml.domToWorkspace(defaultBlocksDom, workspace);
 
         // Define other custom Blockly blocks (DELETE, CHECK_PREREQUISITE, CHECK_IF_TAKEN, GENERATE) here
 
@@ -240,40 +244,6 @@
             };
             reader.readAsText(file);
         }
-
-        // Function to load default blocks
-        function loadDefaultBlocks() {
-            // Replace 'default_blocks.xml' with the actual path to your default .xml file on GitHub
-            const defaultBlocksURL = 'https://github.com/odchilvers/student-program-evaluation-generator/blob/main/src/default_blocks.xml';
-
-            // Fetch the default .xml file from GitHub
-            fetch(defaultBlocksURL)
-                .then(response => response.text())
-                .then(xmlText => {
-                    // Parse the XML and append it to the Blockly workspace
-                    var xml = Blockly.utils.xml.textToDom(xmlText);
-                    Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
-                })
-                .catch(error => {
-                    console.error('Error loading default blocks:', error);
-                });
-        }
-
-        // Function to load blocks from a user-selected file
-        function loadBlocksFile(event) {
-            var file = event.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                var xml = Blockly.utils.xml.textToDom(e.target.result);
-                Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
-            };
-            reader.readAsText(file);
-        }
-
-        // Call loadDefaultBlocks when the page loads
-        document.addEventListener('DOMContentLoaded', function () {
-            loadDefaultBlocks();
-        })
 
     </script>
 
