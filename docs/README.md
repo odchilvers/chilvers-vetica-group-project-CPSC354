@@ -115,5 +115,10 @@ Total = 3.
 Avg = 1.
 ```
 
+## To Extend Project
+* Make edits in src/custom_blocks.js to edit blocks and functionality of them
+* If new blocks or front end changes, complete in src/index.html
+* Update style of html in src/style.css
+
 ## Link to Slides
 [Link to Slides](https://docs.google.com/presentation/d/19slx6cpNEoo3Og8r5qMhYIA9uPR953ZmXgDGgs5AqWc/edit?usp=sharing)
