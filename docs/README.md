@@ -15,6 +15,14 @@
 
 # Reproducible Instructions
 
+## Install & Run
+* fork the repo
+* git clone the repo
+* Run generated code from [Link to Program Generator](https://odchilvers.github.io/student-program-evaluation-generator/src/index.html)
+ in terminal with swipl
+[Link to swipl download](https://www.swi-prolog.org/download/stable)
+* follow instructions below
+
 ## Test Software
 
 * Step 1: Open "Set Up Blocks"
