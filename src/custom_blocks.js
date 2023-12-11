@@ -12,10 +12,15 @@ Blockly.Blocks['add_course'] = {
         this.appendDummyInput()
             .appendField("Credits:")
             .appendField(new Blockly.FieldNumber(0, 0, 3), "CREDITS_INPUT");
-        // Modify the "Semester" input to use a dropdown
         this.appendDummyInput()
-            .appendField("Semester:")
-            .appendField(new Blockly.FieldDropdown([["Fall", "Fall"], ["Spring", "Spring"], ["Fall or Spring", "Fall or Spring"]]), "SEMESTER_INPUT");
+            .appendField("Term:")
+            .appendField(new Blockly.FieldDropdown([
+                ["Fall", "Fall"],
+                ["Spring", "Spring"],
+                ["Fall or Spring", "Fall or Spring"],
+                ["Interterm", "Interterm"],
+                ["Summer", "Summer"]
+            ]), "TERM_INPUT");
         this.appendDummyInput()
             .appendField("Difficulty Score:")
             .appendField(new Blockly.FieldNumber(0, 0, 3), "DIFFICULTY_SCORE_INPUT");
@@ -33,7 +38,7 @@ Blockly.JavaScript['add_course'] = function (block) {
     var value_course_code = block.getFieldValue('COURSE_CODE_INPUT');
     var value_course_name = block.getFieldValue('COURSE_NAME_INPUT');
     var value_credits = block.getFieldValue('CREDITS_INPUT');
-    var value_semester = block.getFieldValue('SEMESTER_INPUT');
+    var value_term = block.getFieldValue('TERM_INPUT');
     var value_difficulty_score = block.getFieldValue('DIFFICULTY_SCORE_INPUT');
     var value_prerequisite = block.getFieldValue('PREREQ_INPUT');
 
@@ -42,7 +47,7 @@ Blockly.JavaScript['add_course'] = function (block) {
         value_course_code + ', ' +
         "'" + value_course_name + "'" + ', ' +
         value_credits + ', ' +
-        "'" + value_semester + "'" + ', ' + // Enclose value_semester in single quotes
+        "'" + value_term + "'" + ', ' + // Enclose value_term in single quotes
         value_difficulty_score + ', ';
 
     // Check if value_prerequisite is "None" and handle accordingly
@@ -75,8 +80,8 @@ Blockly.JavaScript['find_course'] = function (block) {
     // Generate code to find a course using the provided values
     // var code = 'findCourse("' + value_course_code + '");\n';
     var code = `find_course(Code, Course) :-
-    course(Code, Name, Credits, Semester, Difficulty, Prerequisites),
-    Course = course(Code, Name, Credits, Semester, Difficulty, Prerequisites).`;
+    course(Code, Name, Credits, Term, Difficulty, Prerequisites),
+    Course = course(Code, Name, Credits, Term, Difficulty, Prerequisites).`;
 
     return code;
 };
@@ -97,12 +102,12 @@ Blockly.Blocks['update_course'] = {
 Blockly.JavaScript['update_course'] = function (block) {
     // Generate code to update a course using the provided criteria and data
     var code = `update_course(CourseCode, Attribute, NewValue) :-
-    retract(course(CourseCode, CourseName, Credits, Semester, DifficultyScore, Prerequisites)),
-    (Attribute = 'name' -> NewCourse = course(CourseCode, NewValue, Credits, Semester, DifficultyScore, Prerequisites);
-     Attribute = 'credits' -> NewCourse = course(CourseCode, CourseName, NewValue, Semester, DifficultyScore, Prerequisites);
-     Attribute = 'semester' -> NewCourse = course(CourseCode, CourseName, Credits, NewValue, DifficultyScore, Prerequisites);
-     Attribute = 'difficulty_score' -> NewCourse = course(CourseCode, CourseName, Credits, Semester, NewValue, Prerequisites);
-     Attribute = 'prerequisite' -> NewCourse = course(CourseCode, CourseName, Credits, Semester, DifficultyScore, NewValue)),
+    retract(course(CourseCode, CourseName, Credits, Term, DifficultyScore, Prerequisites)),
+    (Attribute = 'name' -> NewCourse = course(CourseCode, NewValue, Credits, Term, DifficultyScore, Prerequisites);
+     Attribute = 'credits' -> NewCourse = course(CourseCode, CourseName, NewValue, Term, DifficultyScore, Prerequisites);
+     Attribute = 'term' -> NewCourse = course(CourseCode, CourseName, Credits, NewValue, DifficultyScore, Prerequisites);
+     Attribute = 'difficulty_score' -> NewCourse = course(CourseCode, CourseName, Credits, Term, NewValue, Prerequisites);
+     Attribute = 'prerequisite' -> NewCourse = course(CourseCode, CourseName, Credits, Term, DifficultyScore, NewValue)),
     assertz(NewCourse).`;
     return code;
 };
@@ -141,7 +146,7 @@ Blockly.Blocks['calculate_avg_difficulty'] = {
         this.setNextStatement(false);     // Disable connection from the bottom
         this.appendDummyInput()
             .appendField("Calculate Average Difficulty Score");
-        this.setTooltip("Determine that average of difficulty score across the semester");
+        this.setTooltip("Determine that average of difficulty score across the term");
         this.setHelpUrl("");
     }
 };
@@ -167,7 +172,7 @@ Blockly.Blocks['total_credits'] = {
         this.setNextStatement(false);     // Disable connection from the bottom
         this.appendDummyInput()
             .appendField("Total Credits");
-        this.setTooltip("Determine the total credits across the semester");
+        this.setTooltip("Determine the total credits across the term");
         this.setHelpUrl("");
     }
 };
